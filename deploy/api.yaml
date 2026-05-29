@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    id: api
+  name: api
+  namespace: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      id: api
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        id: api
+    spec:
+      containers:
+      - image: httpd:2.4.41-alpine
+        name: api
+        resources: {}
+status: {}
