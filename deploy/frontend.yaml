@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    id: frontend
+  name: frontend
+  namespace: dev
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      id: frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        id: frontend
+    spec:
+      containers:
+      - image: nginx:1.17.3-alpine
+        name: frontend
+        resources: {}
+status: {}

@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: np1
+  namespace: dev
+spec:
+  podSelector:
+    matchLabels:
+      id: frontend
+  policyTypes:
+  - Ingress
+  - Egress
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          id: api
+    ports:
+    - protocol: TCP
+      port: 53
+    - protocol: UDP
+      port: 53  
